@@ -1,6 +1,7 @@
 *.[oa]
 *.~
 Makefile
-*.pro.user
+*.pro.*
 
+bin/
 build/
