@@ -69,6 +69,12 @@ int main(int argc, char *argv[])
             return COMMAND_LINE_ERROR;
         }
 
+        boost::asio::io_service io_service;
+        ym::UDPReceiver receiver(io_service);
+        receiver.start_service(port);
+        std::cout << "endpoint: " << receiver.get_endpoint() << std::endl;
+        io_service.run();
+
         /*
         boost::asio::io_service io_service;
         ym::UDPReceiver sender(io_service, message, port);
@@ -77,7 +83,7 @@ int main(int argc, char *argv[])
         */
 
 
-
+        /*
         boost::asio::io_service io_service;
         boost::asio::ip::udp::socket socket(io_service);
         boost::asio::ip::udp::endpoint local(udp::v4(), port);
@@ -111,6 +117,7 @@ int main(int argc, char *argv[])
         {
             std::cout << "error: " << error << std::endl;
         }
+        */
 
 
         /*

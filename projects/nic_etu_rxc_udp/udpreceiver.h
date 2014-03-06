@@ -13,8 +13,14 @@ namespace ym
 class UDPReceiver
 {
 public:
-    UDPReceiver(boost::asio::io_service& io_service,
-                int port);
+    UDPReceiver(boost::asio::io_service& io_service);
+
+public:
+    void start_service(uint16_t port);
+    const udp::endpoint& get_endpoint() const
+    {
+        return endpoint_;
+    }
 
 private:
     void handle_receive_from(const boost::system::error_code& error,
@@ -23,11 +29,8 @@ private:
 private:
     udp::endpoint endpoint_;
     udp::socket socket_;
-    enum { max_length = 12 };
+    enum { max_length = 128 };
     char data_[max_length];
 };
-
-
-
 
 }
