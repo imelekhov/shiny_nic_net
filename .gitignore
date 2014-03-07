@@ -2,6 +2,7 @@
 *.~
 Makefile
 *.pro.*
+*.autosave
 
 bin/
 build/
